@@ -1,13 +1,16 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import Box from 'grommet/components/Box';
 
-import Dashboard from './Dashboard';
+import Dashboard from './../dashboard/Dashboard';
 
 function Routes() {
     return (
-        <Switch>
-            <Route exact path="/" component={Dashboard} />
-        </Switch>
+        <Box pad="small">
+            <Switch>
+                <Route exact path="/" component={Dashboard} />
+            </Switch>
+        </Box>
     );
 }
 
