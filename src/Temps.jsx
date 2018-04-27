@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {default as App} from 'grommet/components/App';
 
-import Navbar from './components/Navbar';
-import Routes from './components/Routes';
+import Navbar from 'navigation/Navbar';
+import Routes from 'navigation/Routes';
 
 class Temps extends Component {
     render() {

@@ -7,7 +7,7 @@ import Stats from './Stats';
 function Dashboard() {
     return (
         <React.Fragment>
-            <Section id="dashboard-text">
+            <Section id="dashboard-text" pad="small">
                 <h1>Welcome to Temps</h1>
                 A simple to use job site where you can easily apply to a wide variety of temporary
                 jobs.
