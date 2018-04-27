@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '../node_modules/grommet-css';
 
-import App from './App';
+import Temps from './Temps';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Temps />, document.getElementById('root'));
 registerServiceWorker();
