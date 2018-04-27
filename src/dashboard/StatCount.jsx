@@ -13,7 +13,7 @@ function StatCount(props) {
 }
 
 StatCount.propTypes = {
-    count: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired
 };
 
