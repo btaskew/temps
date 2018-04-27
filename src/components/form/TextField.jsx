@@ -8,11 +8,13 @@ import TextInput from 'grommet/components/TextInput';
 function TextField(props) {
     return (
         <Box margin={{vertical: 'small'}}>
-            <FormField>
+            <FormField error={props.error ? 'Required' : ''}>
                 <TextInput
                     name={props.name}
                     placeHolder={props.placeHolder}
                     {...props.additionalProps}
+                    value={props.value}
+                    onDOMChange={props.onChange}
                 />
             </FormField>
         </Box>
@@ -21,6 +23,9 @@ function TextField(props) {
 
 TextField.propTypes = {
     name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    error: PropTypes.bool,
     placeHolder: PropTypes.string,
     additionalProps: PropTypes.object
 };
