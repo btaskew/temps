@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 import Columns from 'grommet/components/Columns';
 import StatCount from './StatCount';
 
-import Dashboard from './../scripts/Dashboard';
+import Dashboard from 'scripts/Dashboard';
 
 class Stats extends PureComponent {
 
