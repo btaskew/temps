@@ -1,7 +1,7 @@
-import {Component} from 'react';
+import {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-class Form extends Component {
+class Form extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +14,9 @@ class Form extends Component {
     }
 
     updateField(e) {
-        this.setState({data: Object.assign({}, this.state.data, {[e.target.name]: e.target.value})});
+        this.setState({
+            data: Object.assign({}, this.state.data, {[e.target.name]: e.target.value})
+        });
     }
 
     submitForm() {
@@ -29,19 +31,16 @@ class Form extends Component {
         let errors = {};
         let valid = true;
 
-        for (const field in formData) {
-            if (!this.props.requiredFields.includes(field)) {
-                continue;
-            }
-
+        for (const i in this.props.requiredFields) {
+            const field = this.props.requiredFields[i];
             const value = formData[field];
-            
+
             if (!value || value === '') {
                 valid = false;
                 errors = Object.assign(errors, {[field]: true});
             }
         }
-        
+
         this.setState({errors});
         return valid;
     }

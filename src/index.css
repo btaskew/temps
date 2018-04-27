@@ -3,3 +3,7 @@ body {
     padding: 10px;
     font-family: sans-serif;
 }
+
+#loading-spinner {
+    margin-left: 1em;
+}

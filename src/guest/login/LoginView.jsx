@@ -1,37 +1,36 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+import Notification from 'grommet/components/Notification';
 import Section from 'grommet/components/Section';
 
+import Loading from 'components/Loading';
 import Form from 'components/form/Form';
-
 import LoginForm from './LoginForm';
 
-class LoginView extends Component {
-    constructor(props) {
-        super(props);
+function LoginView(props) {
+    return (
+        <Section align="center">
+            <Form
+                fields={{email: '', password: ''}}
+                requiredFields={['email', 'password']}
+                handleSubmit={props.handleSubmit}
+                render={(state, updateField, submitForm) => (
+                    <LoginForm {...state} updateField={updateField} submitForm={submitForm} />
+                )}
+            />
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+            {props.loading && <Loading />}
 
-    handleSubmit() {}
-
-    render() {
-        const fields = {email: '', password: ''};
-        const requiredFields = ['email', 'password'];
-
-        return (
-            <Section align="center">
-                <Form
-                    fields={fields}
-                    requiredFields={requiredFields}
-                    handleSubmit={this.handleSubmit}
-                    render={(state, updateField, submitForm) => (
-                        <LoginForm {...state} updateField={updateField} submitForm={submitForm} />
-                    )}
-                />
-            </Section>
-        );
-    }
+            {props.error && <Notification status="critical" message={props.error} />}
+        </Section>
+    );
 }
+
+LoginView.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
+    error: PropTypes.string
+};
 
 export default LoginView;
