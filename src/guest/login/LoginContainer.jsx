@@ -9,6 +9,7 @@ class LoginContainer extends PureComponent {
         super(props);
         this.state = {
             error: null,
+            success: null,
             loading: false
         };
 
@@ -42,6 +43,7 @@ class LoginContainer extends PureComponent {
                 handleSubmit={this.handleSubmit}
                 loading={this.state.loading}
                 error={this.state.error}
+                success={this.state.success}
             />
         );
     }

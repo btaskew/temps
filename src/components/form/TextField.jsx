@@ -12,9 +12,9 @@ function TextField(props) {
                 <TextInput
                     name={props.name}
                     placeHolder={props.placeHolder}
-                    {...props.additionalProps}
                     value={props.value}
                     onDOMChange={props.onChange}
+                    {...props.additionalProps}
                 />
             </FormField>
         </Box>

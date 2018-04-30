@@ -21,10 +21,10 @@ function LoginForm(props) {
             <TextField
                 name="password"
                 placeHolder="Password"
-                additionalProps={{type: 'password'}}
                 onChange={props.updateField}
                 value={props.data.password}
                 error={props.errors.password}
+                additionalProps={{type: 'password'}}
             />
             <Submit buttonText="Login" onSubmit={props.submitForm} />
         </Form>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Notification from 'grommet/components/Notification';
 import Section from 'grommet/components/Section';
+import {Redirect} from 'react-router-dom';
 
 import Loading from 'components/Loading';
 import Form from 'components/form/Form';
@@ -23,6 +24,8 @@ function LoginView(props) {
             {props.loading && <Loading />}
 
             {props.error && <Notification status="critical" message={props.error} />}
+
+            {props.success && <Redirect to="/" />}
         </Section>
     );
 }
@@ -30,6 +33,7 @@ function LoginView(props) {
 LoginView.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     loading: PropTypes.bool,
+    success: PropTypes.bool,
     error: PropTypes.string
 };
 
