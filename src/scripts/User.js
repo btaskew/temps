@@ -9,7 +9,10 @@ class User {
             const result = await axios.post(`${ENDPOINT}/login`, credentials);
             response = result.data;
         } catch (error) {
-            response = error.response.data;
+            if (error.response.data) {
+                return error.response.data;
+            }
+            return null;
         }
 
         return response;

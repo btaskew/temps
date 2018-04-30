@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import LoginView from './LoginView';
 
 import User from 'scripts/User';
 
-class LoginContainer extends Component {
+class LoginContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

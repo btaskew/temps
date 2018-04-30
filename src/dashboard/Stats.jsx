@@ -6,25 +6,24 @@ import StatCount from './StatCount';
 import Dashboard from 'scripts/Dashboard';
 
 class Stats extends PureComponent {
-
     constructor(props) {
         super(props);
         this.state = {
-            stats: null
+            stats: {
+                jobs_count: '-',
+                approved_count: '-',
+                workers_count: '-'
+            }
         };
     }
 
     async componentDidMount() {
         const stats = await Dashboard.getStats();
 
-        this.setState({stats: stats});
+        this.setState({stats});
     }
 
     render() {
-        if (!this.state.stats) {
-            return null;
-        }
-
         return (
             <Columns justify="center" responsive={false}>
                 <StatCount count={this.state.stats.jobs_count} type="Open jobs" />
