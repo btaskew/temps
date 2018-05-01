@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Notification from 'grommet/components/Notification';
 import Section from 'grommet/components/Section';
 
-import SearchForm from './SearchForm';
+import SearchForm from './form/SearchForm';
 import SearchResults from './SearchResults';
 import Loading from 'components/Loading';
 
