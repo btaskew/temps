@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {onlyUpdateForKeys} from 'recompose';
 
 import Box from 'grommet/components/Box';
 import FormField from 'grommet/components/FormField';
@@ -38,4 +39,4 @@ TextField.propTypes = {
     placeHolder: PropTypes.string
 };
 
-export default TextField;
+export default onlyUpdateForKeys(['value', 'error'])(TextField);

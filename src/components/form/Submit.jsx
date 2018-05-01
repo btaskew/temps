@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {pure} from 'recompose';
 
 import Footer from 'grommet/components/Footer';
 import Button from 'grommet/components/Button';
@@ -17,4 +18,4 @@ Submit.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
 
-export default Submit;
+export default pure(Submit);

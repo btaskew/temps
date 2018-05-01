@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {pure} from 'recompose';
 
 import Box from 'grommet/components/Box';
 import Label from 'grommet/components/Label';
@@ -22,4 +23,4 @@ TagField.propTypes = {
     value: PropTypes.string.isRequired
 };
 
-export default TagField;
+export default pure(TagField);

@@ -1,4 +1,5 @@
 import React from 'react';
+import {pure} from 'recompose';
 
 import {Link} from 'react-router-dom';
 import Header from 'grommet/components/Header';
@@ -17,4 +18,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default pure(Navbar);

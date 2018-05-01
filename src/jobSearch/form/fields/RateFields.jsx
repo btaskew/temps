@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {pure} from 'recompose';
 
 import Box from 'grommet/components/Box';
 
@@ -30,4 +31,4 @@ RateFields.propTypes = {
     maxValue: PropTypes.string.isRequired
 };
 
-export default RateFields;
+export default pure(RateFields);

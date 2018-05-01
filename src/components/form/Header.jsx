@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {pure} from 'recompose';
 
 import {default as GrommetHeader} from 'grommet/components/Header';
 import Heading from 'grommet/components/Heading';
@@ -16,4 +17,4 @@ Header.propTypes = {
     heading: PropTypes.string.isRequired
 };
 
-export default Header;
+export default pure(Header);
