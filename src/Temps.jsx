@@ -8,20 +8,20 @@ import {UserContext} from './providers';
 class Temps extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            user: null
+
+        this.setUser = (user) => {
+            this.setState({user});
         };
 
-        this.setUser = this.setUser.bind(this);
-    }
-
-    setUser(user) {
-        this.setState({user});
+        this.state = {
+            user: null,
+            setUser: this.setUser
+        };
     }
 
     render() {
         return (
-            <UserContext.Provider value={{user: this.state.user, setUser: this.setUser}}>
+            <UserContext.Provider value={this.state}>
                 <App centered={false}>
                     <Navbar />
                     <Routes />

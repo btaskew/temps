@@ -10,7 +10,7 @@ class LoginContainer extends PureComponent {
         super(props);
         this.state = {
             error: null,
-            success: null,
+            success: false,
             loading: false
         };
 
@@ -18,17 +18,9 @@ class LoginContainer extends PureComponent {
     }
 
     async handleSubmit(credentials) {
-        this.setState({loading: true});
+        this.setState({loading: true, error: null});
 
         const result = await User.login(credentials);
-
-        if (!result) {
-            this.setState({
-                loading: false,
-                error: 'We were unable to log you in. Please try again later'
-            });
-            return;
-        }
 
         if (result.error) {
             this.setState({loading: false, error: result.error});
