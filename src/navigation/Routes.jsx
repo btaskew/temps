@@ -4,12 +4,14 @@ import Box from 'grommet/components/Box';
 
 import Dashboard from 'dashboard/Dashboard';
 import LoginPage from 'guest/login/LoginPage';
+import JobSearchContainer from 'jobSearch/JobSearchContainer';
 
 function Routes() {
     return (
         <Box pad="medium">
             <Switch>
                 <Route exact path="/" component={Dashboard} />
+                <Route exact path="/jobs" component={JobSearchContainer} />
                 <Route exact path="/login" component={LoginPage} />
             </Switch>
         </Box>
