@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {ENDPOINT} from './../constants';
 
-class Dashboard
-{
+class Dashboard {
     async getStats() {
         let stats = [];
 

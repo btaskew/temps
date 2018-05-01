@@ -6,10 +6,10 @@ import Menu from 'grommet/components/Menu';
 function UnauthenticatedLinks() {
     return (
         <Menu direction="row" inline={true}>
-            <Link to="/login" id="home-link">
+            <Link to="/login">
                 Login
             </Link>
-            <Link to="/signup" id="home-link">
+            <Link to="/signup">
                 Signup
             </Link>
         </Menu>

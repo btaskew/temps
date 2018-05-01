@@ -32,9 +32,9 @@ function LoginView(props) {
 
 LoginView.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    error: PropTypes.string,
     loading: PropTypes.bool,
-    success: PropTypes.bool,
-    error: PropTypes.string
+    success: PropTypes.bool
 };
 
 export default LoginView;

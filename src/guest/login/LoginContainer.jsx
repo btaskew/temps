@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 import LoginView from './LoginView';
 
@@ -34,6 +35,7 @@ class LoginContainer extends PureComponent {
             return;
         }
 
+        this.props.setUser(result.data);
         this.setState({loading: false, success: true});
     }
 
@@ -48,5 +50,9 @@ class LoginContainer extends PureComponent {
         );
     }
 }
+
+LoginContainer.propTypes = {
+    setUser: PropTypes.func.isRequired
+};
 
 export default LoginContainer;

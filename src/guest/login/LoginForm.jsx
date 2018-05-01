@@ -32,10 +32,10 @@ function LoginForm(props) {
 }
 
 LoginForm.propTypes = {
-    updateField: PropTypes.func.isRequired,
-    submitForm: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
+    submitForm: PropTypes.func.isRequired,
+    updateField: PropTypes.func.isRequired
 };
 
 export default LoginForm;

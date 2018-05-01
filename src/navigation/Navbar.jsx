@@ -8,7 +8,7 @@ import Links from './Links';
 
 function Navbar() {
     return (
-        <Header colorIndex="neutral-1-a" pad="medium">
+        <Header colorIndex="neutral-3-a" pad="medium">
             <Link to="/" id="home-link">
                 <Title>Temps</Title>
             </Link>
