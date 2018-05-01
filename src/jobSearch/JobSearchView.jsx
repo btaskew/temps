@@ -21,7 +21,7 @@ function JobSearchView(props) {
 
 JobSearchView.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    error: PropTypes.bool,
+    error: PropTypes.string,
     jobs: PropTypes.array,
     loading: PropTypes.bool
 };

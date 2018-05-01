@@ -17,12 +17,12 @@ class JobSearchContainer extends PureComponent {
     }
 
     async handleSubmit(fields) {
-        this.setState({loading: true});
+        this.setState({loading: true, error: null, jobs: null});
 
         const result = await Jobs.get(fields);
     
         if (result.error) {
-            this.setState({error: result.error, loading: false});
+            this.setState({error: result.error, loading: false, jobs: null});
             return;
         }
     
