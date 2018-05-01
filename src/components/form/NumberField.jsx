@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Box from 'grommet/components/Box';
 import FormField from 'grommet/components/FormField';
 import Label from 'grommet/components/Label';
-import TextInput from 'grommet/components/TextInput';
+import NumberInput from 'grommet/components/NumberInput';
 
-function TextField(props) {
+function NumberField(props) {
     return (
         <Box margin={{vertical: 'small'}}>
             {props.label && (
@@ -15,12 +15,12 @@ function TextField(props) {
                 </Label>
             )}
             <FormField error={props.error ? 'Required' : ''}>
-                <TextInput
-                    id={props.name}
+                <NumberInput
                     name={props.name}
-                    placeHolder={props.placeHolder}
                     value={props.value}
-                    onDOMChange={props.onChange}
+                    onChange={props.onChange}
+                    min={1}
+                    max={50}
                     {...props.additionalProps}
                 />
             </FormField>
@@ -28,14 +28,13 @@ function TextField(props) {
     );
 }
 
-TextField.propTypes = {
+NumberField.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     additionalProps: PropTypes.object,
     error: PropTypes.bool,
-    label: PropTypes.string,
-    placeHolder: PropTypes.string
+    label: PropTypes.string
 };
 
-export default TextField;
+export default NumberField;
