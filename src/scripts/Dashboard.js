@@ -1,18 +1,17 @@
-import axios from 'axios';
-import {ENDPOINT} from './../constants';
+import Request from './Request';
 
 class Dashboard {
+    /**
+     * @return {object|null}
+     */
     async getStats() {
-        let stats = [];
+        const result = await Request.get('stats');
 
-        try {
-            const result = await axios.get(`${ENDPOINT}/stats`);
-            stats = result.data.data;
-        } catch (error) {
+        if (result.error) {
             return null;
         }
 
-        return stats;
+        return result;
     }
 }
 

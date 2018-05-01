@@ -20,7 +20,9 @@ class Stats extends PureComponent {
     async componentDidMount() {
         const stats = await Dashboard.getStats();
 
-        this.setState({stats});
+        if (stats) {
+            this.setState({stats});
+        }
     }
 
     render() {

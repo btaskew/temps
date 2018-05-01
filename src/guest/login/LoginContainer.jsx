@@ -27,7 +27,7 @@ class LoginContainer extends PureComponent {
             return;
         }
 
-        this.props.setUser(result.data);
+        this.props.setUser(result);
         this.setState({loading: false, success: true});
     }
 
