@@ -6,13 +6,10 @@ class Jobs {
      * @return {object}
      */
     async get(fields) {
-        // Have to copy object to avoid manipulating original data stored in state
-        const queryFields = JSON.parse(JSON.stringify(fields));
-
-        this.stripEmptyFields(queryFields);
-
+        let queryFields = null;
+        
         try {
-            this.validateMinMaxValues(queryFields);
+            queryFields = this.prepareFields(fields);
         } catch (error) {
             return {error: error.message};
         }
@@ -24,11 +21,35 @@ class Jobs {
      * @param {object} fields
      * @return {object}
      */
+    prepareFields(fields) {
+        // Have to copy object to avoid manipulating original data stored in state
+        const queryFields = JSON.parse(JSON.stringify(fields));
+
+        this.stripEmptyFields(queryFields);
+        this.removeSpacesFromTags(queryFields);
+        this.validateMinMaxValues(queryFields);
+
+        return queryFields;
+    }
+
+    /**
+     * @param {object} fields
+     * @return {object}
+     */
     stripEmptyFields(fields) {
         for (const key in fields) {
             if (!fields[key] || fields[key] === '') {
                 delete fields[key];
             }
+        }
+    }
+
+    /**
+     * @param {object}
+     */
+    removeSpacesFromTags(fields) {
+        if (fields.hasOwnProperty('tags')) {
+            fields.tags = fields.tags.replace(/\s/g, '');
         }
     }
 

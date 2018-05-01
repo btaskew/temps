@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Box from 'grommet/components/Box';
 import Columns from 'grommet/components/Columns';
+import Label from 'grommet/components/Label';
 
 import TextField from 'components/form/TextField';
 import NumberField from 'components/form/NumberField';
@@ -15,10 +16,13 @@ function FormView(props) {
                 <Box>
                     <TextField
                         name="tags"
-                        label="Tags (e.g. catering, IT)"
+                        label="Tags"
                         onChange={props.updateField}
                         value={props.data.tags}
                     />
+                    <Label maring="none" size="small">
+                        As comma separated list, e.g. catering, IT
+                    </Label>
                 </Box>
                 <Box>
                     <NumberField
