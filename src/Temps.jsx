@@ -9,7 +9,7 @@ class Temps extends Component {
     constructor(props) {
         super(props);
 
-        this.setUser = (user) => {
+        this.setUser = user => {
             this.setState({user});
         };
 

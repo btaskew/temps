@@ -48,10 +48,12 @@ class Request {
      * @return {object}
      */
     setError(error) {
-        let errorMessage = 'Oops! Something went wrong, please try again later';
+        let errorMessage = '';
 
-        if (error.response.data.error) {
+        try {
             errorMessage = error.response.data.error;
+        } catch (error) {
+            errorMessage = 'Oops! Something went wrong, please try again later';
         }
 
         return {error: errorMessage};

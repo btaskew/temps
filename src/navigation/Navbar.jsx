@@ -11,7 +11,9 @@ function Navbar() {
     return (
         <Header colorIndex="neutral-3-a" pad="medium">
             <Link to="/" id="home-link">
-                <Heading id="app-title" tag="h2">Temps</Heading>
+                <Heading id="app-title" tag="h2">
+                    Temps
+                </Heading>
             </Link>
             <Links />
         </Header>

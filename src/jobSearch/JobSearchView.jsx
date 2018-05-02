@@ -10,7 +10,7 @@ import Loading from 'components/Loading';
 
 function JobSearchView(props) {
     return (
-        <Section pad="none" id="foo">
+        <Section pad="none">
             <SearchForm handleSubmit={props.handleSubmit} />
             {props.loading && <Loading />}
             {props.error && <Notification status="critical" message={props.error} />}
