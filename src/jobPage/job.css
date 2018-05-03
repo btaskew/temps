@@ -1,0 +1,8 @@
+.job-description {
+    flex: 3;
+}
+
+.job-information {
+    flex: 1;
+    margin-left: 20px;
+}

@@ -17,6 +17,10 @@ class Jobs {
         return await Request.get('jobs', queryFields);
     }
 
+    async getJob(id) {
+        return await Request.get(`jobs/${id}`);
+    }
+
     /**
      * @param {object} fields
      * @return {object}
