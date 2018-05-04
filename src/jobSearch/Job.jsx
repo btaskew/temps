@@ -11,7 +11,7 @@ function Job(props) {
     return (
         <Link to={`jobs/${props.id}`} className="job-link">
             <ListItem id={props.id} align="center" justify="between">
-                <JobDetails title={props.title} description={props.description} rate={props.rate} />
+                <JobDetails {...props} />
                 <FormNextIcon size="large" colorIndex="grey-3-a" />
             </ListItem>
         </Link>

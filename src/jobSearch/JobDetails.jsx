@@ -10,7 +10,7 @@ function JobDetails(props) {
             <Heading tag="h3" margin="none">
                 {props.title}
             </Heading>
-            <span>£{props.rate} per hour</span>
+            <span>£{props.rate} per hour | {props.duration} days</span>
             <p>{props.description.substr(0, 100)}...</p>
         </Box>
     );
@@ -18,6 +18,7 @@ function JobDetails(props) {
 
 JobDetails.propTypes = {
     title: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     rate: PropTypes.string.isRequired
 };
