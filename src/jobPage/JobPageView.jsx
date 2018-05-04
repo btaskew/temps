@@ -5,6 +5,7 @@ import './job.css';
 
 import Article from 'grommet/components/Article';
 import Heading from 'grommet/components/Heading';
+import Notification from 'grommet/components/Notification';
 import Section from 'grommet/components/Section';
 
 import Information from './Information';
@@ -13,6 +14,10 @@ import Loading from 'components/Loading';
 function JobPageView(props) {
     if (props.loading) {
         return <Loading />;
+    }
+
+    if (props.error) {
+        return <Notification status="critical" message={props.error} />;
     }
 
     return (
