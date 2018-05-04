@@ -10,7 +10,9 @@ class JobSearchContainer extends PureComponent {
         this.state = {
             jobs: null,
             error: null,
-            loading: false
+            loading: false,
+            currentPage: 1,
+            lastPage: 1
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +28,7 @@ class JobSearchContainer extends PureComponent {
             return;
         }
     
-        this.setState({jobs: result, loading: false});
+        this.setState({jobs: result.data, lastPage: result.last_page, loading: false});
     }
 
     render() {
@@ -36,6 +38,7 @@ class JobSearchContainer extends PureComponent {
                 loading={this.state.loading}
                 error={this.state.error}
                 handleSubmit={this.handleSubmit}
+                lastPage={this.state.lastPage}
             />
         );
     }
