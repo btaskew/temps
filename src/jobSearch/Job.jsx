@@ -9,7 +9,7 @@ import JobDetails from './JobDetails';
 
 function Job(props) {
     return (
-        <Link to={`jobs/${props.id}`} className="job-link">
+        <Link to={{pathname: `jobs/${props.id}`, state: {fromSearch: true}}} className="job-link">
             <ListItem id={props.id} align="center" justify="between">
                 <JobDetails {...props} />
                 <FormNextIcon size="large" colorIndex="grey-3-a" />

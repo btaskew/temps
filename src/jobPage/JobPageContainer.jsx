@@ -27,12 +27,19 @@ class JobPageContainer extends PureComponent {
     }
 
     render() {
-        return <JobPageView {...this.state} />;
+        let fromSearch = false;
+
+        if (this.props.location.state && this.props.location.state.fromSearch) {
+            fromSearch = true;
+        }
+
+        return <JobPageView {...this.state} fromSearch={fromSearch} />;
     }
 }
 
 JobPageContainer.propTypes = {
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
 };
 
 export default JobPageContainer;

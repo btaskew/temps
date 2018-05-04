@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import './search.css';
 
 import JobSearchView from './JobSearchView';
 
 import Jobs from 'scripts/Jobs';
+import cache from 'js-cache';
 
 class JobSearchContainer extends PureComponent {
     constructor(props) {
@@ -20,6 +22,12 @@ class JobSearchContainer extends PureComponent {
         this.handlePageChange = this.handlePageChange.bind(this);
     }
 
+    componentDidMount() {
+        if (this.props.location.state && this.props.location.state && cache.get('jobs')) {
+            this.setState({jobs: cache.get('jobs')});
+        }
+    }
+
     async handleFormSubmit(fields) {
         this.setState({loading: true, error: null, jobs: null, currentPage: 0});
 
@@ -30,13 +38,14 @@ class JobSearchContainer extends PureComponent {
             return;
         }
 
+        cache.set('jobs', result.data);
         this.setState({jobs: result.data, loading: false, lastPage: result.last_page});
     }
 
     async handlePageChange({selected}) {
         this.setState({loading: true, error: null, jobs: null});
 
-        // For some reason selected is 0 indexed, so we have to add 1
+        // The paginator package stores current page 0 indexed, so we have to add 1
         const result = await Jobs.getPage(selected + 1);
 
         if (result.error) {
@@ -44,6 +53,7 @@ class JobSearchContainer extends PureComponent {
             return;
         }
 
+        cache.set('jobs', result.data);
         this.setState({jobs: result.data, currentPage: selected, loading: false});
     }
 
@@ -57,5 +67,9 @@ class JobSearchContainer extends PureComponent {
         );
     }
 }
+
+JobSearchContainer.propTypes = {
+    location: PropTypes.object.isRequired
+};
 
 export default JobSearchContainer;
