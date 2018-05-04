@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
+import 'components/components.css';
 import '../node_modules/grommet-css';
 
 import {BrowserRouter} from 'react-router-dom';

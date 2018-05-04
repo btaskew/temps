@@ -2,6 +2,8 @@ import Request from './Request';
 
 class Jobs {
     /**
+     * Get jobs filtered by given query fields
+     * 
      * @param {object} fields
      * @return {object}
      */
@@ -17,10 +19,21 @@ class Jobs {
         return await Request.get('jobs', queryFields);
     }
 
-    async getNextPage(page) {
+    /**
+     * Get paginated jobs by page
+     * 
+     * @param {number} page
+     * @return {object}
+     */
+    async getPage(page) {
         return await Request.get(`jobs?page=${page}`);
     }
 
+    /**
+     * Get single job by given id
+     * 
+     * @param {number} id 
+     */
     async getJob(id) {
         return await Request.get(`jobs/${id}`);
     }

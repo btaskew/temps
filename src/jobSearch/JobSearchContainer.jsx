@@ -37,26 +37,22 @@ class JobSearchContainer extends PureComponent {
         this.setState({loading: true, error: null, jobs: null});
 
         // For some reason selected is 0 indexed, so we have to add 1
-        const result = await Jobs.getNextPage(selected + 1);
+        const result = await Jobs.getPage(selected + 1);
 
         if (result.error) {
             this.setState({error: result.error, loading: false, jobs: null});
             return;
         }
 
-        this.setState({
-            jobs: result.data,
-            currentPage: selected,
-            loading: false
-        });
+        this.setState({jobs: result.data, currentPage: selected, loading: false});
     }
 
     render() {
         return (
             <JobSearchView
                 {...this.state}
-                handlePageChange={this.handlePageChange}
                 handleFormSubmit={this.handleFormSubmit}
+                handlePageChange={this.handlePageChange}
             />
         );
     }
