@@ -8,11 +8,11 @@ function Information({job}) {
         <Box className="job-information">
             <h3>Information</h3>
             <span>
-                <b>Duration: </b>
-                {Number(job.duration)} days
+                <b>Hourly rate: </b>£{job.rate}
             </span>
             <span>
-                <b>Hourly rate: </b>£{job.rate}
+                <b>Duration: </b>
+                {Number(job.duration)} days
             </span>
             <span>
                 <b>Open vacancies: </b>

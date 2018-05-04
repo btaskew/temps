@@ -4,6 +4,15 @@ body {
     font-family: sans-serif;
 }
 
+.job-link {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+
+.job-link:hover {
+    color: #5929b8 !important;
+}
+
 #app-title {
     margin-right: 1em;
 }
