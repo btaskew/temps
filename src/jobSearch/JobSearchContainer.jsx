@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import './search.css';
 
 import JobSearchView from './JobSearchView';
 
@@ -11,34 +12,51 @@ class JobSearchContainer extends PureComponent {
             jobs: null,
             error: null,
             loading: false,
-            currentPage: 1,
+            currentPage: 0,
             lastPage: 1
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this);
     }
 
-    async handleSubmit(fields) {
-        this.setState({loading: true, error: null, jobs: null});
+    async handleFormSubmit(fields) {
+        this.setState({loading: true, error: null, jobs: null, currentPage: 0});
 
         const result = await Jobs.get(fields);
-    
+
         if (result.error) {
             this.setState({error: result.error, loading: false, jobs: null});
             return;
         }
-    
-        this.setState({jobs: result.data, lastPage: result.last_page, loading: false});
+
+        this.setState({jobs: result.data, loading: false, lastPage: result.last_page});
+    }
+
+    async handlePageChange({selected}) {
+        this.setState({loading: true, error: null, jobs: null});
+
+        // For some reason selected is 0 indexed, so we have to add 1
+        const result = await Jobs.getNextPage(selected + 1);
+
+        if (result.error) {
+            this.setState({error: result.error, loading: false, jobs: null});
+            return;
+        }
+
+        this.setState({
+            jobs: result.data,
+            currentPage: selected,
+            loading: false
+        });
     }
 
     render() {
         return (
             <JobSearchView
-                jobs={this.state.jobs}
-                loading={this.state.loading}
-                error={this.state.error}
-                handleSubmit={this.handleSubmit}
-                lastPage={this.state.lastPage}
+                {...this.state}
+                handlePageChange={this.handlePageChange}
+                handleFormSubmit={this.handleFormSubmit}
             />
         );
     }

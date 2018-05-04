@@ -13,7 +13,7 @@ import Loading from 'components/Loading';
 function JobSearchView(props) {
     return (
         <Section pad="none">
-            <SearchForm handleSubmit={props.handleSubmit} />
+            <SearchForm handleSubmit={props.handleFormSubmit} />
             {props.loading && <Loading />}
             {props.error && <Notification status="critical" message={props.error} />}
             {props.jobs && (
@@ -22,10 +22,12 @@ function JobSearchView(props) {
                     <Box justify="center" direction="row" margin={{top: 'medium'}}>
                         <ReactPaginate
                             pageCount={props.lastPage}
-                            pageRangeDisplayed={3}
-                            marignPagesDisplayed={1}
+                            pageRangeDisplayed={4}
+                            marginPagesDisplayed={2}
                             containerClassName={'pagination'}
                             activeClassName={'active'}
+                            onPageChange={props.handlePageChange}
+                            forcePage={props.currentPage}
                         />
                     </Box>
                 </React.Fragment>
@@ -35,8 +37,10 @@ function JobSearchView(props) {
 }
 
 JobSearchView.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    handlePageChange: PropTypes.func.isRequired,
     lastPage: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
     error: PropTypes.string,
     jobs: PropTypes.array,
     loading: PropTypes.bool,

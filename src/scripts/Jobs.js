@@ -17,6 +17,10 @@ class Jobs {
         return await Request.get('jobs', queryFields);
     }
 
+    async getNextPage(page) {
+        return await Request.get(`jobs?page=${page}`);
+    }
+
     async getJob(id) {
         return await Request.get(`jobs/${id}`);
     }
