@@ -51,6 +51,7 @@ class Form extends PureComponent {
         return (
             <FormContext.Provider value={{
                 values: this.state.data,
+                errors: this.state.errors,
                 updateField: this.handleUpdate,
                 submitForm: this.handleSubmit
             }}>

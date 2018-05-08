@@ -18,9 +18,9 @@ function TextField(props) {
                 </Label>
             )}
 
-            <FormField error={props.error ? 'Required' : ''}>
-                <FormContext.Consumer>
-                    {form => (
+            <FormContext.Consumer>
+                {form => (
+                    <FormField error={form.errors[props.name] ? 'Required' : ''}>
                         <TextInput
                             id={props.name}
                             name={props.name}
@@ -29,9 +29,9 @@ function TextField(props) {
                             onDOMChange={form.updateField}
                             {...props.additionalProps}
                         />
-                    )}
-                </FormContext.Consumer>
-            </FormField>
+                    </FormField>
+                )}
+            </FormContext.Consumer>
         </Box>
     );
 }

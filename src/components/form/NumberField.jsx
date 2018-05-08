@@ -18,9 +18,9 @@ function NumberField(props) {
                 </Label>
             )}
 
-            <FormField error={props.error ? 'Required' : ''}>
-                <FormContext.Consumer>
-                    {form => (
+            <FormContext.Consumer>
+                {form => (
+                    <FormField error={form.errors[props.name] ? 'Required' : ''}>
                         <NumberInput
                             name={props.name}
                             value={form.values[props.name]}
@@ -29,9 +29,9 @@ function NumberField(props) {
                             max={50}
                             {...props.additionalProps}
                         />
-                    )}
-                </FormContext.Consumer>
-            </FormField>
+                    </FormField>
+                )}
+            </FormContext.Consumer>
         </Box>
     );
 }
