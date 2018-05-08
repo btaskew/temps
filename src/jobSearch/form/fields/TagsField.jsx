@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {pure} from 'recompose';
 
 import Box from 'grommet/components/Box';
@@ -7,10 +6,10 @@ import Label from 'grommet/components/Label';
 
 import TextField from 'components/form/TextField';
 
-function TagField(props) {
+function TagsField() {
     return (
         <Box>
-            <TextField name="tags" label="Tags" onChange={props.updateField} value={props.value} />
+            <TextField name="tags" label="Tags" />
             <Label maring="none" size="small">
                 As comma separated list, e.g. catering, IT
             </Label>
@@ -18,9 +17,4 @@ function TagField(props) {
     );
 }
 
-TagField.propTypes = {
-    updateField: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired
-};
-
-export default pure(TagField);
+export default pure(TagsField);

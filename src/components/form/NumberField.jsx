@@ -7,6 +7,8 @@ import FormField from 'grommet/components/FormField';
 import Label from 'grommet/components/Label';
 import NumberInput from 'grommet/components/NumberInput';
 
+import {FormContext} from 'providers';
+
 function NumberField(props) {
     return (
         <Box margin={{vertical: 'small'}}>
@@ -15,15 +17,20 @@ function NumberField(props) {
                     {props.label}
                 </Label>
             )}
+
             <FormField error={props.error ? 'Required' : ''}>
-                <NumberInput
-                    name={props.name}
-                    value={props.value}
-                    onChange={props.onChange}
-                    min={1}
-                    max={50}
-                    {...props.additionalProps}
-                />
+                <FormContext.Consumer>
+                    {form => (
+                        <NumberInput
+                            name={props.name}
+                            value={form.values[props.name]}
+                            onChange={form.updateField}
+                            min={1}
+                            max={50}
+                            {...props.additionalProps}
+                        />
+                    )}
+                </FormContext.Consumer>
             </FormField>
         </Box>
     );
@@ -31,8 +38,6 @@ function NumberField(props) {
 
 NumberField.propTypes = {
     name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
     additionalProps: PropTypes.object,
     error: PropTypes.bool,
     label: PropTypes.string

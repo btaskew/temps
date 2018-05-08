@@ -1,5 +1,7 @@
-import {PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
+import {FormContext} from 'providers';
 
 class Form extends PureComponent {
     constructor(props) {
@@ -9,17 +11,17 @@ class Form extends PureComponent {
             errors: {}
         };
 
-        this.updateField = this.updateField.bind(this);
-        this.submitForm = this.submitForm.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    updateField(e) {
+    handleUpdate(e) {
         this.setState({
             data: Object.assign({}, this.state.data, {[e.target.name]: e.target.value})
         });
     }
 
-    submitForm() {
+    handleSubmit() {
         if (!this.validate(this.state.data)) {
             return;
         }
@@ -46,7 +48,15 @@ class Form extends PureComponent {
     }
 
     render() {
-        return this.props.render(this.state, this.updateField, this.submitForm);
+        return (
+            <FormContext.Provider value={{
+                values: this.state.data,
+                updateField: this.handleUpdate,
+                submitForm: this.handleSubmit
+            }}>
+                {this.props.render()}
+            </FormContext.Provider>
+        );
     }
 }
 

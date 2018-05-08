@@ -10,9 +10,7 @@ function SearchForm(props) {
         <Form
             fields={{tags: '', minDuration: '', maxDuration: '', minRate: '', maxRate: ''}}
             handleSubmit={props.handleSubmit}
-            render={(state, updateField, submitForm) => (
-                <FormView {...state} updateField={updateField} submitForm={submitForm} />
-            )}
+            render={() => <FormView />}
         />
     );
 }
