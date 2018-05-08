@@ -9,18 +9,18 @@ import {FormContext} from 'providers';
 
 function Submit(props) {
     return (
-        <FormContext.Consumer>
-            {form => (
-                <Footer pad={{vertical: 'medium'}}>
+        <Footer pad={{vertical: 'medium'}}>
+            <FormContext.Consumer>
+                {form => (
                     <Button
                         label={props.buttonText}
                         onClick={form.submitForm}
                         primary={true}
                         fill
                     />
-                </Footer>
-            )}
-        </FormContext.Consumer>
+                )}
+            </FormContext.Consumer>
+        </Footer>
     );
 }
 

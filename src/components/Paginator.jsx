@@ -5,6 +5,10 @@ import Box from 'grommet/components/Box';
 import ReactPaginate from 'react-paginate';
 
 function Paginator(props) {
+    if (props.pageCount === 1) {
+        return null;
+    }
+
     return (
         <Box justify="center" direction="row" margin={{top: 'medium'}}>
             <ReactPaginate

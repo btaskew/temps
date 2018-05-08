@@ -7,7 +7,6 @@ import Section from 'grommet/components/Section';
 import SearchForm from './form/SearchForm';
 import SearchResults from './SearchResults';
 import Loading from 'components/Loading';
-import Paginator from '../components/Paginator';
 
 function JobSearchView(props) {
     return (
@@ -18,22 +17,14 @@ function JobSearchView(props) {
 
             {props.error && <Notification status="critical" message={props.error} />}
 
-            {props.jobs &&
-                (props.jobs.length === 0 ? (
-                    <Notification
-                        status="warning"
-                        message="No jobs were found for the selected options"
-                    />
-                ) : (
-                    <React.Fragment>
-                        <SearchResults jobs={props.jobs} />
-                        <Paginator
-                            pageCount={props.lastPage}
-                            currentPage={props.currentPage}
-                            handlePageChange={props.handlePageChange}
-                        />
-                    </React.Fragment>
-                ))}
+            {props.jobs && (
+                <SearchResults
+                    jobs={props.jobs}
+                    lastPage={props.lastPage}
+                    currentPage={props.currentPage}
+                    handlePageChange={props.handlePageChange}
+                />
+            )}
         </Section>
     );
 }
