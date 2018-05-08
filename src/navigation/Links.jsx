@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import Menu from 'grommet/components/Menu';
 
 import UnauthenticatedLinks from './UnauthenticatedLinks';
+import StaffLinks from './StaffLinks';
 import {UserContext} from 'providers';
 
 function Links() {
@@ -15,6 +16,7 @@ function Links() {
                     <Box flex={true} justify="start" direction="row">
                         <Menu direction="row" inline={true}>
                             <Link to="/jobs">Search jobs</Link>
+                            {user && user.type === 'staff' && <StaffLinks />}
                         </Menu>
                     </Box>
                     <Box flex={true} justify="end" direction="row">
