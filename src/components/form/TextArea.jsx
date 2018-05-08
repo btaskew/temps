@@ -5,11 +5,10 @@ import {onlyUpdateForKeys} from 'recompose';
 import Box from 'grommet/components/Box';
 import FormField from 'grommet/components/FormField';
 import Label from 'grommet/components/Label';
-import TextInput from 'grommet/components/TextInput';
 
 import {FormContext} from 'providers';
 
-function TextField(props) {
+function TextArea(props) {
     return (
         <Box margin={{vertical: 'small'}}>
             {props.label && (
@@ -21,13 +20,14 @@ function TextField(props) {
             <FormContext.Consumer>
                 {form => (
                     <FormField error={form.errors[props.name] ? 'Required' : ''}>
-                        <TextInput
+                        <textarea
                             id={props.name}
                             name={props.name}
-                            placeHolder={props.placeholder}
+                            placeholder={props.placeholder}
                             value={form.values[props.name]}
-                            onDOMChange={form.updateField}
+                            onChange={form.updateField}
                             {...props.additionalProps}
+                            rows="15"
                         />
                     </FormField>
                 )}
@@ -36,7 +36,7 @@ function TextField(props) {
     );
 }
 
-TextField.propTypes = {
+TextArea.propTypes = {
     name: PropTypes.string.isRequired,
     additionalProps: PropTypes.object,
     error: PropTypes.bool,
@@ -44,4 +44,4 @@ TextField.propTypes = {
     placeholder: PropTypes.string
 };
 
-export default onlyUpdateForKeys(['value', 'error'])(TextField);
+export default onlyUpdateForKeys(['value', 'error'])(TextArea);

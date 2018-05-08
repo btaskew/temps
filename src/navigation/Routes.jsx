@@ -20,6 +20,7 @@ function Routes() {
                     <Switch>
                         {user && user.type === 'staff' && <StaffRoutes />}
 
+                        <StaffRoutes />
                         <Route exact path="/" component={Dashboard} />
                         <Route exact path="/jobs" component={JobSearchContainer} />
                         <Route exact path="/jobs/:id" component={JobPageContainer} />

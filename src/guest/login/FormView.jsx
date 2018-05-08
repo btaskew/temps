@@ -12,11 +12,11 @@ function FormView() {
             <Header heading="Login" />
             <TextField
                 name="email"
-                placeHolder="Email address"
+                placeholder="Email address"
             />
             <TextField
                 name="password"
-                placeHolder="Password"
+                placeholder="Password"
                 additionalProps={{type: 'password'}}
             />
             <Submit buttonText="Login" />

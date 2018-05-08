@@ -12,15 +12,15 @@ function FormView() {
             <Header heading="Sign up to Temps" />
             <TextField
                 name="name"
-                placeHolder="Full name"
+                placeholder="Full name"
             />
             <TextField
                 name="email"
-                placeHolder="Email address"
+                placeholder="Email address"
             />
             <TextField
                 name="password"
-                placeHolder="Password"
+                placeholder="Password"
                 additionalProps={{type: 'password'}}
             />
             <Submit buttonText="Sign up" />
