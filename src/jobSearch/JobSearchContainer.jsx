@@ -23,7 +23,7 @@ class JobSearchContainer extends PureComponent {
     }
 
     componentDidMount() {
-        if (this.props.location.state && this.props.location.state && cache.get('jobs')) {
+        if (this.props.location.state && this.props.location.state.fromJobPage && cache.get('jobs')) {
             this.setState({jobs: cache.get('jobs')});
         }
     }

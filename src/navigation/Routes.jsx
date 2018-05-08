@@ -5,6 +5,7 @@ import Box from 'grommet/components/Box';
 
 import Dashboard from 'dashboard/Dashboard';
 import LoginPage from 'guest/login/LoginPage';
+import SignupPage from 'guest/signup/SignupPage';
 import JobSearchContainer from 'jobSearch/JobSearchContainer';
 import JobPageContainer from 'jobPage/JobPageContainer';
 
@@ -16,6 +17,7 @@ function Routes() {
                 <Route exact path="/jobs" component={JobSearchContainer} />
                 <Route exact path="/jobs/:id" component={JobPageContainer} />
                 <Route exact path="/login" component={LoginPage} />
+                <Route exact path="/signup" component={SignupPage} />
             </Switch>
         </Box>
     );
