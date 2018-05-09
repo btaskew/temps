@@ -4,6 +4,7 @@ import Box from 'grommet/components/Box';
 import {Link} from 'react-router-dom';
 import Menu from 'grommet/components/Menu';
 
+import Logout from 'components/Logout';
 import UnauthenticatedLinks from './UnauthenticatedLinks';
 import StaffLinks from './StaffLinks';
 import {UserContext} from 'providers';
@@ -11,7 +12,7 @@ import {UserContext} from 'providers';
 function Links() {
     return (
         <UserContext.Consumer>
-            {({user}) => (
+            {({user, setUser}) => (
                 <React.Fragment>
                     <Box flex={true} justify="start" direction="row">
                         <Menu direction="row" inline={true}>
@@ -20,7 +21,7 @@ function Links() {
                         </Menu>
                     </Box>
                     <Box flex={true} justify="end" direction="row">
-                        {user ? <span>{user.name}</span> : <UnauthenticatedLinks />}
+                        {user ? <Logout setUser={setUser} email={user.email} /> : <UnauthenticatedLinks />}
                     </Box>
                 </React.Fragment>
             )}

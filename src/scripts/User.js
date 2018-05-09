@@ -16,6 +16,13 @@ class User {
     async signup(userDetails) {
         return await Request.post('signup/worker', userDetails);
     }
+
+    /**
+     * @param {string} email 
+     */
+    async logout(email) {
+        await Request.post('logout', {email: email});
+    }
 }
 
 export default new User();
