@@ -10,11 +10,11 @@ class User {
     }
 
     /**
-     * @param {object} credentials
+     * @param {object} userDetails
      * @return {object}
      */
-    async signup(credentials) {
-        return await Request.post('signup/worker', credentials);
+    async signup(userDetails) {
+        return await Request.post('signup/worker', userDetails);
     }
 }
 

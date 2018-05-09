@@ -3,13 +3,13 @@ import Request from './Request';
 class Jobs {
     /**
      * Get jobs filtered by given query fields
-     * 
+     *
      * @param {object} fields
      * @return {object}
      */
     async get(fields) {
         let queryFields = null;
-        
+
         try {
             queryFields = this.prepareFields(fields);
         } catch (error) {
@@ -21,7 +21,7 @@ class Jobs {
 
     /**
      * Get paginated jobs by page
-     * 
+     *
      * @param {number} page
      * @return {object}
      */
@@ -31,11 +31,30 @@ class Jobs {
 
     /**
      * Get single job by given id
-     * 
-     * @param {number} id 
+     *
+     * @param {number} id
      */
     async getJob(id) {
         return await Request.get(`jobs/${id}`);
+    }
+
+    /**
+     * Create a new job
+     *
+     * @param {object} jobInformation
+     * @param {string} token
+     */
+    async create(jobInformation, token) {
+        let queryFields = null;
+
+        try {
+            queryFields = this.prepareFields(jobInformation);
+            queryFields.tags = queryFields.tags.split(',');
+        } catch (error) {
+            return {error: error.message};
+        }
+
+        return await Request.post(`jobs?token=${token}`, queryFields);
     }
 
     /**
