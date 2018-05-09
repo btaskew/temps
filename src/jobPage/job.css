@@ -2,11 +2,15 @@
     flex: 3;
 }
 
-.job-information {
+.job-sidebar {
     flex: 1;
     margin-left: 20px;
 }
 
 .link-back {
     margin-bottom: 1.5em;
+}
+
+.related-jobs {
+    margin-top: 3em;
 }

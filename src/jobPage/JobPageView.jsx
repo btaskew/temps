@@ -11,6 +11,7 @@ import Section from 'grommet/components/Section';
 import Information from './Information';
 import LinkBack from './LinkBack';
 import Loading from 'components/Loading';
+import RelatedJobsContainer from 'relatedJobs/RelatedJobsContainer';
 
 function JobPageView(props) {
     if (props.loading) {
@@ -26,10 +27,13 @@ function JobPageView(props) {
             {props.fromSearch && <LinkBack />}
 
             <Heading>{props.job.title}</Heading>
-            
+
             <Section justify="between" direction="row">
                 <Section className="job-description">{props.job.description}</Section>
-                <Information job={props.job} />
+                <Section className="job-sidebar">
+                    <Information job={props.job} />
+                    <RelatedJobsContainer tags={props.job.tags} jobId={props.job.id} />
+                </Section>
             </Section>
         </Article>
     );
@@ -39,7 +43,7 @@ JobPageView.propTypes = {
     error: PropTypes.string,
     fromSearch: PropTypes.bool,
     job: PropTypes.object,
-    loading: PropTypes.bool,
+    loading: PropTypes.bool
 };
 
 export default JobPageView;

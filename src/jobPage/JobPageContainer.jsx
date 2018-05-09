@@ -13,10 +13,23 @@ class JobPageContainer extends PureComponent {
             error: null,
             job: null
         };
+
     }
 
-    async componentDidMount() {
-        const result = await Jobs.getJob(this.props.match.params.id);
+    componentDidMount() {
+        this.loadJob(this.props.match.params.id);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // If linking from related job have to force reloading of job data as component will not unmout
+        if(nextProps.location.pathname !== this.props.location.pathname) {
+            this.setState({loading: true, job: null, error: null});
+            this.loadJob(nextProps.match.params.id);
+        }
+    }
+    
+    async loadJob(id) {
+        const result = await Jobs.getJob(id);
 
         if (result.error) {
             this.setState({error: result.error, loading: false, job: null});

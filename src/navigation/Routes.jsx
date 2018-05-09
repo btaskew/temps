@@ -23,9 +23,9 @@ function Routes() {
 
                         <Route exact path="/" component={Dashboard} />
                         <Route exact path="/jobs" component={JobSearchContainer} />
-                        <Route exact path="/jobs/:id" component={JobPageContainer} />
-                        <Route exact path="/login" component={LoginPage} />
-                        <Route exact path="/signup" component={SignupPage} />
+                        <Route path="/jobs/:id" component={JobPageContainer} />
+                        <Route path="/login" component={LoginPage} />
+                        <Route path="/signup" component={SignupPage} />
                     </Switch>
                 )}
             </UserContext.Consumer>
