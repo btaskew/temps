@@ -5,8 +5,7 @@ import CreateJobView from './CreateJobView';
 
 import Jobs from 'scripts/Jobs';
 
-class CreateJobContainer extends PureComponent
-{
+class CreateJobContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,8 +18,8 @@ class CreateJobContainer extends PureComponent
     }
 
     async handleSubmit(jobInformation) {
-        this.setState({loading: true, error: false});
-        
+        this.setState({loading: true, error: null});
+
         const result = await Jobs.create(jobInformation, this.props.user.token);
 
         if (result.error) {
@@ -31,13 +30,8 @@ class CreateJobContainer extends PureComponent
     }
 
     render() {
-
-        return (
-            <CreateJobView {...this.state} handleSubmit={this.handleSubmit} />
-        );
-
+        return <CreateJobView {...this.state} handleSubmit={this.handleSubmit} />;
     }
-
 }
 
 CreateJobContainer.propTypes = {

@@ -9,8 +9,9 @@ import SignupPage from 'guest/signup/SignupPage';
 import JobSearchContainer from 'jobSearch/JobSearchContainer';
 import JobPageContainer from 'jobPage/JobPageContainer';
 
+import CreateJobPage from 'createJob/CreateJobPage';
+
 import {UserContext} from 'providers';
-import StaffRoutes from './StaffRoutes';
 
 function Routes() {
     return (
@@ -18,9 +19,8 @@ function Routes() {
             <UserContext.Consumer>
                 {({user}) => (
                     <Switch>
-                        {user && user.type === 'staff' && <StaffRoutes />}
+                        {user && user.type === 'staff' && <Route exact path="/jobs/create" component={CreateJobPage} />}
 
-                        <StaffRoutes />
                         <Route exact path="/" component={Dashboard} />
                         <Route exact path="/jobs" component={JobSearchContainer} />
                         <Route exact path="/jobs/:id" component={JobPageContainer} />
