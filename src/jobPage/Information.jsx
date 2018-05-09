@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Box from 'grommet/components/Box';
 
+import Tags from 'scripts/Tags';
+
 function Information({job}) {
     return (
         <Box className="job-information">
@@ -21,6 +23,11 @@ function Information({job}) {
             <span>
                 <b>Closing date: </b>
                 {job.closing_date}
+            </span>
+            <br />
+            <span>
+                <b>Tags: </b>
+                {Tags.toString(job.tags)}
             </span>
         </Box>
     );
