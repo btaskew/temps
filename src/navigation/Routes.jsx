@@ -15,6 +15,7 @@ import ProfilePage from 'profile/ProfilePage';
 import EducationContainer from 'profile/education/EducationContainer';
 
 import {UserContext} from 'providers';
+import PrivateRoute from './PrivateRoute';
 
 function Routes() {
     return (
@@ -22,25 +23,34 @@ function Routes() {
             <UserContext.Consumer>
                 {({user}) => (
                     <Switch>
-                        {user &&
-                            user.type === 'staff' && (
-                                <Route path="/jobs/create" exact component={CreateJobPage} />
+                        <PrivateRoute
+                            path="/jobs/create"
+                            userType="staff"
+                            component={CreateJobPage}
+                            exact
+                        />
+
+                        <PrivateRoute
+                            path="/profile"
+                            userType="worker"
+                            user={user}
+                            component={ProfilePage}
+                            exact
+                        />
+                        <PrivateRoute
+                            path="/profile/education"
+                            userType="worker"
+                            user={user}
+                            render={routeProps => (
+                                <EducationContainer {...routeProps} token={user.token} />
                             )}
+                        />
 
                         <Route path="/" exact component={Dashboard} />
                         <Route path="/jobs" exact component={JobSearchContainer} />
                         <Route path="/jobs/:id" component={JobPageContainer} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/signup" component={SignupPage} />
-
-                        <Route path="/profile" exact component={ProfilePage} />
-                        <Route
-                            path="/profile/education"
-                            exact
-                            render={routeProps => (
-                                <EducationContainer {...routeProps} user={user} />
-                            )}
-                        />
                     </Switch>
                 )}
             </UserContext.Consumer>

@@ -15,7 +15,7 @@ class EducationContainer extends PureComponent {
     }
 
     async componentDidMount() {
-        const education = await Education.get(this.props.user.token);
+        const education = await Education.get(this.props.token);
 
         if (education.error) {
             this.setState({error: education.error, loading: false});
@@ -31,7 +31,7 @@ class EducationContainer extends PureComponent {
 }
 
 EducationContainer.propTypes = {
-    user: PropTypes.object.isRequired
+    token: PropTypes.string.isRequired
 };
 
 export default EducationContainer;
