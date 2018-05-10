@@ -11,36 +11,25 @@ function RelatedJobsView(props) {
         return null;
     }
 
-    let count = 0;
-
     return (
         <Box className="related-jobs">
             <h3>Related jobs</h3>
 
             <List>
-                {props.jobs.map(job => {
-                    if (job.id === props.jobId || count === 3) {
-                        return null;
-                    }
-
-                    count++;
-
-                    return (
-                        <Link key={job.id} to={`/jobs/${job.id}`} replace>
-                            <ListItem>
-                                <span>{job.title}</span>
-                                <span>£{job.rate}ph</span>
-                            </ListItem>
-                        </Link>
-                    );
-                })}
+                {props.jobs.map(job => (
+                    <Link key={job.id} to={`/jobs/${job.id}`}>
+                        <ListItem>
+                            <span>{job.title}</span>
+                            <span>£{job.rate}ph</span>
+                        </ListItem>
+                    </Link>
+                ))}
             </List>
         </Box>
     );
 }
 
 RelatedJobsView.propTypes = {
-    jobId: PropTypes.number.isRequired,
     jobs: PropTypes.array
 };
 

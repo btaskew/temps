@@ -64,6 +64,16 @@ class Formatter
 
         return false;
     }
+
+    /**
+     * @param {array} array 
+     * @return {array}
+     */
+    removeDuplicateObjects(array) {
+        return array.filter((item, index, arr) => (
+            arr.map(mapObj => mapObj.id).indexOf(item.id) === index
+        ));
+    }
 }
 
 export default new Formatter();

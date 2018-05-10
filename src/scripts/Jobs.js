@@ -1,7 +1,6 @@
 import Request from './Request';
 
 import Formatter from './Formatter';
-import Tags from './Tags';
 
 class Jobs {
     /**
@@ -58,25 +57,6 @@ class Jobs {
         }
 
         return await Request.post(`jobs?token=${token}`, queryFields);
-    }
-
-    /**
-     * Get jobs that have match the tags given
-     * 
-     * @param {array} tags 
-     */
-    async getRelated(tags) {
-        const queryTags = Tags.toString(tags).replace(/\s/g, '');
-
-        const jobs = await Request.get('jobs', {tags: queryTags});
-        
-        try {
-            return jobs.data.filter((job, index, arr) => (
-                arr.map(mapObj => mapObj.id).indexOf(job.id) === index
-            ));
-        } catch (error) {
-            return {error: 'Unable to process related jobs'};
-        }
     }
 }
 

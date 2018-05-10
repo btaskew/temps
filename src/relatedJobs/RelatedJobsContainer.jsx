@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import RelatedJobsView from './RelatedJobsView';
 
-import Jobs from 'scripts/Jobs';
+import RelatedJobs from 'scripts/RelatedJobs';
 
 class RelatedJobsContainer extends PureComponent {
     constructor(props) {
@@ -14,7 +14,7 @@ class RelatedJobsContainer extends PureComponent {
     }
 
     async componentDidMount() {
-        const result = await Jobs.getRelated(this.props.tags);
+        const result = await RelatedJobs.get(this.props.tags, this.props.jobId);
 
         if (!result.error) {
             this.setState({jobs: result});
@@ -22,7 +22,7 @@ class RelatedJobsContainer extends PureComponent {
     }
 
     render() {
-        return <RelatedJobsView jobs={this.state.jobs} jobId={this.props.jobId} />;
+        return <RelatedJobsView jobs={this.state.jobs} />;
     }
 }
 
