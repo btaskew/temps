@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Redirect} from 'react-router-dom';
-
-import LoginForm from './LoginForm';
-import View from '../../components/View';
+import Form from 'components/form/Form';
+import View from 'components/View';
+import FormView from './FormView';
 
 function LoginView(props) {
     return (
         <View loading={props.loading} error={props.error} additionalProps={{align: 'center'}}>
-            <LoginForm handleSubmit={props.handleSubmit} />
-
-            {props.success && <Redirect to="/" />}
+            <Form
+                fields={{email: '', password: ''}}
+                requiredFields={['email', 'password']}
+                handleSubmit={props.handleSubmit}
+                render={() => <FormView />}
+            />
         </View>
     );
 }

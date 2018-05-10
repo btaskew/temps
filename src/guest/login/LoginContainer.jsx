@@ -10,7 +10,6 @@ class LoginContainer extends PureComponent {
         super(props);
         this.state = {
             error: null,
-            success: false,
             loading: false
         };
 
@@ -28,7 +27,7 @@ class LoginContainer extends PureComponent {
         }
 
         this.props.setUser(result);
-        this.setState({loading: false, success: true});
+        this.props.history.goBack();
     }
 
     render() {
@@ -37,6 +36,7 @@ class LoginContainer extends PureComponent {
 }
 
 LoginContainer.propTypes = {
+    history: PropTypes.object.isRequired,
     setUser: PropTypes.func.isRequired
 };
 
