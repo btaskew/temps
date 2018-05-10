@@ -12,6 +12,7 @@ import JobPageContainer from 'jobPage/JobPageContainer';
 import CreateJobPage from 'createJob/CreateJobPage';
 
 import ProfilePage from 'profile/ProfilePage';
+import EducationContainer from 'profile/education/EducationContainer';
 
 import {UserContext} from 'providers';
 
@@ -33,6 +34,13 @@ function Routes() {
                         <Route path="/signup" component={SignupPage} />
 
                         <Route path="/profile" exact component={ProfilePage} />
+                        <Route
+                            path="/profile/education"
+                            exact
+                            render={routeProps => (
+                                <EducationContainer {...routeProps} user={user} />
+                            )}
+                        />
                     </Switch>
                 )}
             </UserContext.Consumer>
