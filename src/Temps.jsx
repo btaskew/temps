@@ -5,6 +5,8 @@ import Navbar from 'navigation/Navbar';
 import Routes from 'navigation/Routes';
 import {UserContext} from './providers';
 
+import Cookies from 'js-cookie';
+
 class Temps extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +19,12 @@ class Temps extends Component {
             user: null,
             setUser: this.setUser
         };
+    }
+
+    componentDidMount() {
+        if (Cookies.get('temps-user')) {
+            this.setUser(Cookies.getJSON('temps-user'));
+        }
     }
 
     render() {

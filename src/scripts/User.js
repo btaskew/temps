@@ -1,4 +1,7 @@
+import Cookies from 'js-cookie';
 import Request from './Request';
+
+const cookieName = 'temps-user';
 
 class User {
     /**
@@ -6,7 +9,11 @@ class User {
      * @return {object}
      */
     async login(credentials) {
-        return await Request.post('login', credentials);
+        const user = await Request.post('login', credentials);
+
+        this.setCookie(user);
+
+        return user;
     }
 
     /**
@@ -14,14 +21,30 @@ class User {
      * @return {object}
      */
     async signup(userDetails) {
-        return await Request.post('signup/worker', userDetails);
+        const user = await Request.post('signup/worker', userDetails);
+
+        this.setCookie(user);
+
+        return user;
     }
 
     /**
-     * @param {string} email 
+     * @param {string} email
      */
     async logout(email) {
-        await Request.post('logout', {email: email});
+        const user = Request.post('logout', {email: email});
+
+        if (!user.error) {
+            Cookies.remove(cookieName);
+        }
+
+        return user;
+    }
+
+    setCookie(user) {
+        if (!user.error) {
+            Cookies.set(cookieName, user, {expires: 1});
+        }
     }
 }
 
