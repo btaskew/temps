@@ -4,6 +4,14 @@ body {
     font-family: sans-serif;
 }
 
+.experience-description {
+    margin: 0.1em 0px 0.5em !important;
+}
+
 #app-title {
     margin-right: 1em;
+}
+
+#home-link:hover {
+    text-decoration: none;
 }

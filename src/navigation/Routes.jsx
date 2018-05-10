@@ -13,6 +13,7 @@ import CreateJobPage from 'createJob/CreateJobPage';
 
 import ProfilePage from 'profile/ProfilePage';
 import EducationContainer from 'profile/education/EducationContainer';
+import ExperienceContainer from 'profile/experience/ExperienceContainer';
 
 import {UserContext} from 'providers';
 import PrivateRoute from './PrivateRoute';
@@ -43,6 +44,14 @@ function Routes() {
                             user={user}
                             render={routeProps => (
                                 <EducationContainer {...routeProps} token={user.token} />
+                            )}
+                        />
+                        <PrivateRoute
+                            path="/profile/experience"
+                            userType="worker"
+                            user={user}
+                            render={routeProps => (
+                                <ExperienceContainer {...routeProps} token={user.token} />
                             )}
                         />
 
