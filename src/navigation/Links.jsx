@@ -21,7 +21,14 @@ function Links() {
                         </Menu>
                     </Box>
                     <Box flex={true} justify="end" direction="row">
-                        {user ? <Logout setUser={setUser} email={user.email} /> : <UnauthenticatedLinks />}
+                        {user ? (
+                            <Menu direction="row" inline={true}>
+                                <Link to="/profile">{user.name}</Link>
+                                <Logout setUser={setUser} email={user.email} />
+                            </Menu>
+                        ) : (
+                            <UnauthenticatedLinks />
+                        )}
                     </Box>
                 </React.Fragment>
             )}
