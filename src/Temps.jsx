@@ -29,8 +29,8 @@ class Temps extends Component {
     }
 
     async componentDidMount() {
-        if (Cookies.get('temps-user-token')) {
-            const user = await User.fetchUser(Cookies.get('temps-user-token'));
+        if (Cookies.get('temps_user_token')) {
+            const user = await User.fetchUser(Cookies.get('temps_user_token'));
 
             if (!user.error) {
                 this.setUser(user);

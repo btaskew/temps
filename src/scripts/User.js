@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import Request from './Request';
 
-const cookieName = 'temps-user-token';
+const cookieName = 'temps_user_token';
 
 class User {
     /**
