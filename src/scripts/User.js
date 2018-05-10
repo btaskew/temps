@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import Request from './Request';
 
-const cookieName = 'temps-user';
+const cookieName = 'temps-user-token';
 
 class User {
     /**
@@ -41,9 +41,20 @@ class User {
         return user;
     }
 
+    /**
+     * @param {string} token
+     * @return {object}
+     */
+    async fetchUser(token) {
+        return await Request.get('user', {token: token});
+    }
+
+    /**
+     * @param {string} token
+     */
     setCookie(user) {
-        if (!user.error) {
-            Cookies.set(cookieName, user, {expires: 1});
+        if (user.token) {
+            Cookies.set(cookieName, user.token, {expires: 1});
         }
     }
 }
