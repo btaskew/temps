@@ -32,14 +32,7 @@ class SignupContainer extends PureComponent {
     }
 
     render() {
-        return (
-            <SignupView
-                handleSubmit={this.handleSubmit}
-                loading={this.state.loading}
-                error={this.state.error}
-                success={this.state.success}
-            />
-        );
+        return <SignupView {...this.state} handleSubmit={this.handleSubmit}/>;
     }
 }
 

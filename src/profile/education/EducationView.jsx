@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 
 import List from 'grommet/components/List';
 import Notification from 'grommet/components/Notification';
-import Section from 'grommet/components/Section';
 
-import Loading from 'components/Loading';
+import View from 'components/View';
 import Education from './Education';
 
 function EducationView(props) {
     return (
-        <Section>
+        <View loading={props.loading} error={props.error}>
             <h2>My education</h2>
-
-            {props.loading && <Loading />}
-
-            {props.error && <Notification status="critical" message={props.error} />}
 
             {props.education &&
                 (props.education.length < 1 ? (
@@ -30,14 +25,14 @@ function EducationView(props) {
                         ))}
                     </List>
                 ))}
-        </Section>
+        </View>
     );
 }
 
 EducationView.propTypes = {
     loading: PropTypes.bool,
     error: PropTypes.string,
-    education: PropTypes.array,
+    education: PropTypes.array
 };
 
 export default EducationView;

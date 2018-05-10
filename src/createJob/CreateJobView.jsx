@@ -4,17 +4,13 @@ import PropTypes from 'prop-types';
 import Notification from 'grommet/components/Notification';
 import {Link} from 'react-router-dom';
 
-import Loading from 'components/Loading';
+import View from 'components/View';
 import CreateJobForm from './CreateJobForm';
 
 function CreateJobView(props) {
     return (
-        <React.Fragment>
+        <View loading={props.loading} error={props.error}>
             <CreateJobForm handleSubmit={props.handleSubmit} />
-
-            {props.loading && <Loading />}
-
-            {props.error && <Notification status="critical" message={props.error} />}
 
             {props.jobId && (
                 <Link to={`/jobs/${props.jobId}`}>
@@ -25,7 +21,7 @@ function CreateJobView(props) {
                     />
                 </Link>
             )}
-        </React.Fragment>
+        </View>
     );
 }
 

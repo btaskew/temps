@@ -13,11 +13,13 @@ class EducationContainer extends PureComponent {
             education: null
         };
     }
+
     async componentDidMount() {
         const education = await Education.get(this.props.user.token);
 
         if (education.error) {
             this.setState({error: education.error, loading: false});
+            return;
         }
 
         this.setState({education: education, loading: false});

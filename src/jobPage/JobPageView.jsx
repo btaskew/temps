@@ -5,37 +5,33 @@ import './job.css';
 
 import Article from 'grommet/components/Article';
 import Heading from 'grommet/components/Heading';
-import Notification from 'grommet/components/Notification';
 import Section from 'grommet/components/Section';
 
 import Information from './Information';
 import LinkBack from './LinkBack';
-import Loading from 'components/Loading';
 import RelatedJobsContainer from 'relatedJobs/RelatedJobsContainer';
+import View from '../components/View';
 
 function JobPageView(props) {
-    if (props.loading) {
-        return <Loading />;
-    }
-
-    if (props.error) {
-        return <Notification status="critical" message={props.error} />;
-    }
-
     return (
-        <Article>
-            {props.fromSearch && <LinkBack />}
+        <View loading={props.loading} error={props.error}>
+            {props.job && (
+                <Article>
+                    {props.fromSearch && <LinkBack />}
 
-            <Heading>{props.job.title}</Heading>
+                    <Heading>{props.job.title}</Heading>
 
-            <Section justify="between" direction="row">
-                <Section className="job-description">{props.job.description}</Section>
-                <Section className="job-sidebar">
-                    <Information job={props.job} />
-                    <RelatedJobsContainer tags={props.job.tags} jobId={props.job.id} />
-                </Section>
-            </Section>
-        </Article>
+                    <Section justify="between" direction="row">
+                        <Section className="job-description">{props.job.description}</Section>
+                        
+                        <Section className="job-sidebar">
+                            <Information job={props.job} />
+                            <RelatedJobsContainer tags={props.job.tags} jobId={props.job.id} />
+                        </Section>
+                    </Section>
+                </Article>
+            )}
+        </View>
     );
 }
 

@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Notification from 'grommet/components/Notification';
-import Section from 'grommet/components/Section';
-
 import SearchForm from './form/SearchForm';
 import SearchResults from './SearchResults';
-import Loading from 'components/Loading';
+import View from 'components/View';
 
 function JobSearchView(props) {
     return (
-        <Section pad="none">
+        <View loading={props.loading} error={props.error}>
             <SearchForm handleSubmit={props.handleFormSubmit} />
-
-            {props.loading && <Loading />}
-
-            {props.error && <Notification status="critical" message={props.error} />}
-
+            
             {props.jobs && (
                 <SearchResults
                     jobs={props.jobs}
@@ -25,7 +18,7 @@ function JobSearchView(props) {
                     handlePageChange={props.handlePageChange}
                 />
             )}
-        </Section>
+        </View>
     );
 }
 

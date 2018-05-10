@@ -7,7 +7,7 @@ import MenuItem from 'components/MenuItem';
 
 function ProfilePage() {
     return (
-        <Section>
+        <Section pad="none">
             <h1>My profile</h1>
             <List>
                 <MenuItem link="/profile/applications" text="View my applications" />

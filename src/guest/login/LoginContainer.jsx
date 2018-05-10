@@ -32,14 +32,7 @@ class LoginContainer extends PureComponent {
     }
 
     render() {
-        return (
-            <LoginView
-                handleSubmit={this.handleSubmit}
-                loading={this.state.loading}
-                error={this.state.error}
-                success={this.state.success}
-            />
-        );
+        return <LoginView {...this.state} handleSubmit={this.handleSubmit} />;
     }
 }
 
